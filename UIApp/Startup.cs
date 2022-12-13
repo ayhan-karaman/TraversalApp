@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,20 @@ namespace UIApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IDestinationService, DestinationManager>();
+            services.AddScoped<IDestinationDal, EfDestinationDal>();
+
+            services.AddScoped<IGuideService, GuideManager>();
+            services.AddScoped<IGuideDal, EfGuideDal>();
+
+            services.AddScoped<IFeatureService, FeatureManager>();
+            services.AddScoped<IFeatureDal, EfFeatureDal>();
+
+            services.AddScoped<ISubAboutService, SubAboutManager>();
+            services.AddScoped<ISubAboutDal, EfSubAboutDal>();
+
+            services.AddScoped<ITestimonialService, TestimonialManager>();
+            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
