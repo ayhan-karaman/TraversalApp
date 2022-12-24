@@ -1,0 +1,46 @@
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewData["Title"] = "Kullanıcı Giriş";
+}
+
+<div class="card card-authentication1 mx-auto my-5">
+                <div class="card-body">
+                <div class="card-content p-2">
+                    <div class="text-center">
+                        <img src="~/images/logo-icon.png" alt="logo icon">
+                    </div>
+                <div class="card-title text-uppercase text-center py-3">Giriş Yap</div>
+                    <form>
+                    <div class="form-group">
+                    <label for="email" class="sr-only">E-Posta</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="text" id="email" class="form-control input-shadow" placeholder="E-Posta Adresiniz">
+                        <div class="form-control-position">
+                            <i class="icon-user"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="password" class="sr-only">Şifre</label>
+                    <div class="position-relative has-icon-right">
+                        <input type="password" id="password" class="form-control input-shadow" placeholder="Şifreniz">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group col-6 text-right">
+                    <a href="reset-password.html">Şifremi Unuttum</a>
+                    </div>
+                    </div>
+                    <button type="button" class="btn btn-light btn-block">Giriş Yap</button>
+                   
+                    
+                    </form>
+                </div>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <p class="text-warning mb-0">Bir hesabınız yok mu? <a asp-action="Signup" asp-controller="Auth"> Buradan kaydolun</a></p>
+                </div>
+                </div>

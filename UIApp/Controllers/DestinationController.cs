@@ -21,8 +21,15 @@ namespace UIApp.Controllers
 
         public IActionResult Index()
         {
-            var data = _destinationService.GetAll();
+            var data = _destinationService.GetAllDestinationIncludes();
             return View(data);
+        }
+
+        public IActionResult DestinationDetails(int id)
+        {
+                ViewBag.id = id;
+                var destination = _destinationService.GetByIdDestinationIncludes(id);
+                return View(destination);
         }
 
        

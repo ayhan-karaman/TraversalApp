@@ -26,9 +26,9 @@
             {
                  <div class="col-lg-4 col-md-4 col-6 mt-md-0 mt-4">
                   <div class="column">
-                      <a href="blog-single.html"><img src="@item.Image" alt="" class="img-fluid"></a>
+                      <a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID"><img src="@item.DestinationImages.First().PathName" alt="" class="img-fluid"></a>
                       <div class="info">
-                          <h4><a href="blog-single.html">@item.City</a></h4>
+                          <h4><a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID">@item.City</a></h4>
                           <p>@item.DayNight </p>
                           <div class="dst-btm">
                             <h6 class="">Fiyat </h6>

@@ -24,9 +24,14 @@ namespace Business.Concrete
             _destinationDal.Delete(entity);
         }
 
+        public List<Destination> GetAllDestinationIncludes()
+        {
+             return _destinationDal.GetAllDestinationIncludesDal();
+        }
+
         public List<Destination> GetAll()
         {
-            return _destinationDal.GetAll();
+             return _destinationDal.GetAll();
         }
 
         public Destination GetById(int id)
@@ -37,6 +42,11 @@ namespace Business.Concrete
         public void Update(Destination entity)
         {
             _destinationDal.Update(entity);
+        }
+
+        public Destination GetByIdDestinationIncludes(int id)
+        {
+            return _destinationDal.GetDestinationIncludesDal(x => x.ID == id);
         }
     }
 

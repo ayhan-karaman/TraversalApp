@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ @await Html.PartialAsync("~/Views/MemberLayoutPartial/_HeadPartial.cshtml")
+
+<body class="bg-theme bg-theme1">
+ 
+<!-- Start wrapper-->
+ <div id="wrapper">
+ 
+  <!--Start sidebar-wrapper-->
+@await Html.PartialAsync("~/Views/MemberLayoutPartial/_SidebarPartial.cshtml")
+   <!--End sidebar-wrapper-->
+
+<!--Start topbar header-->
+ @await Html.PartialAsync("~/Views/MemberLayoutPartial/_HeaderPartial.cshtml")
+<!--End topbar header-->
+
+<div class="clearfix"></div>
+	
+   @RenderBody()
+	  
+	
+	
+	<!--Start footer-->
+	@await Html.PartialAsync("~/Views/MemberLayoutPartial/_FooterPartial.cshtml")
+	<!--End footer-->
+	
+  <!--start color switcher-->
+  @await Html.PartialAsync("~/Views/MemberLayoutPartial/_SwitcherPartial.cshtml")
+  <!--end color switcher-->
+   
+  </div><!--End wrapper-->
+
+  <!-- Bootstrap core JavaScript-->
+  @await Html.PartialAsync("~/Views/MemberLayoutPartial/_ScriptPartial.cshtml")
+
+  
+</body>
+</html>

@@ -8,6 +8,7 @@ namespace Business.Abstract
 {
     public interface IDestinationService:IGenericService<Destination>
     {
-        
+        List<Destination> GetAllDestinationIncludes();
+        Destination GetByIdDestinationIncludes(int id);
     }
 }

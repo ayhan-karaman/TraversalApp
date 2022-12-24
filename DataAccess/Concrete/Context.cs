@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Concrete;
+using Entities.Concrete.IdentityConcrete;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete
 {
-    public class Context:DbContext
+    public class Context:IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=<Your-Username>; Password=<Your-Password>");
+            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=postgres; Password=Burcum2855");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<About2> About2s { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Destination> Destinations { get; set; }
+        public DbSet<DestinationImage> DestinationImages { get; set; }
+        public DbSet<OtherDetails> OtherDetails { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Feature2> Feature2s { get; set; }
         public DbSet<Guide> Guides { get; set; }
@@ -26,6 +32,43 @@ namespace DataAccess.Concrete
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            modelBuilder.Ignore <IdentityUserLogin<int>>();
+            modelBuilder.Ignore <IdentityUserRole<int>>();
+            modelBuilder.Ignore<IdentityUserClaim<int>>();
+            modelBuilder.Ignore<IdentityUserToken<int>>();
+        
+            modelBuilder.Entity<AppUser>(x => {
+                x.ToTable("users").HasKey(k => k.Id);
+                x.Property(p => p.Id).HasColumnName("user_id");
+                x.Property(p => p.Name).HasColumnName("name");
+                x.Property(p => p.Surname).HasColumnName("sur_name");
+                x.Property(p => p.ImageUrl).HasColumnName("image_url");
+                x.Property(p => p.Email).HasColumnName("email");
+                x.Property(p => p.AccessFailedCount).HasColumnName("access_faild_count");
+                x.Property(p => p.ConcurrencyStamp).HasColumnName("concurrency_stamp");
+                x.Property(p => p.EmailConfirmed).HasColumnName("email_confirmed");
+                x.Property(p => p.UserName).HasColumnName("user_name");
+                x.Property(p => p.NormalizedEmail).HasColumnName("normalized_email");
+                x.Property(p => p.PasswordHash).HasColumnName("password_hash");
+                x.Property(p => p.Gender).HasColumnName("gender");
+                x.Property(p => p.PhoneNumber).HasColumnName("phone_number");
+                x.Property(p => p.NormalizedUserName).HasColumnName("normalized_user_name");
+                x.Property(p => p.TwoFactorEnabled).HasColumnName("two_factor_enabled");
+                x.Property(p => p.LockoutEnabled).HasColumnName("lockout_enabled");
+                x.Property(p => p.LockoutEnd).HasColumnName("lockout_end");
+                x.Property(p => p.PhoneNumberConfirmed).HasColumnName("phone_number_confirmed");
+                x.Property(p => p.SecurityStamp).HasColumnName("security_stamp");
+            });
+            modelBuilder.Entity<AppRole>(x => {
+                x.ToTable("roles").HasKey(k => k.Id);
+                x.Property(p => p.Id).HasColumnName("role_id");
+                x.Property(p => p.Name).HasColumnName("role_name");
+                x.Property(p => p.NormalizedName).HasColumnName("normalized_name");
+                x.Property(p => p.ConcurrencyStamp).HasColumnName("concurrency_stamp");
+            });
+           
+            
             modelBuilder.Entity<About>(x => {
                 x.ToTable("abouts").HasKey(k => k.ID);
                 x.Property(p => p.ID).HasColumnName("about_id");
@@ -57,17 +100,48 @@ namespace DataAccess.Concrete
                 x.Property(p => p.Status).HasColumnName("status");
             });
 
+          
+
             modelBuilder.Entity<Destination>(x => {
                 x.ToTable("destinations").HasKey(k => k.ID);
                 x.Property(p => p.ID).HasColumnName("destination_id");
                 x.Property(p => p.City).HasColumnName("city");
                 x.Property(p => p.DayNight).HasColumnName("day_night");
                 x.Property(p => p.Price).HasColumnName("price");
-                x.Property(p => p.Image).HasColumnName("image");
                 x.Property(p => p.Description).HasColumnName("description");
                 x.Property(p => p.Capacity).HasColumnName("capacity");
                 x.Property(p => p.Status).HasColumnName("status");
+                x.HasMany(x => x.OtherDetails);
+                x.HasMany(x => x.DestinationImages);
             });
+            modelBuilder.Entity<Comment>(x => {
+                x.ToTable("comments").HasKey(k => k.ID);
+                x.Property(p => p.ID).HasColumnName("comment_id");
+                x.Property(p => p.DestinationID).HasColumnName("destination_id");
+                x.Property(p => p.CommentUser).HasColumnName("comment_user");
+                x.Property(p => p.CommentDate).HasColumnName("comment_date");
+                x.Property(p => p.Content).HasColumnName("comment_content");
+                x.Property(p => p.State).HasColumnName("state");
+                x.HasOne(x => x.Destination);
+            });
+            modelBuilder.Entity<DestinationImage>(x => {
+                x.ToTable("destination_images").HasKey(k => k.ID);
+                x.Property(p => p.ID).HasColumnName("destination_images_id");
+                x.Property(p => p.PathName).HasColumnName("path_name");
+                x.Property(p => p.DestinationID).HasColumnName("destination_id");
+                x.Property(p => p.Status).HasColumnName("status");
+                x.HasOne(x => x.Destination);
+            });
+
+            modelBuilder.Entity<OtherDetails>(x => {
+                x.ToTable("other_details").HasKey(k => k.ID);
+                x.Property(p => p.ID).HasColumnName("other_details_id");
+                x.Property(p => p.Description).HasColumnName("description");
+                x.Property(p => p.DestinationID).HasColumnName("destination_id");
+                x.Property(p => p.Status).HasColumnName("status");
+                x.HasOne(x => x.Destination);
+            });
+            
 
             modelBuilder.Entity<Feature>(x => {
                 x.ToTable("features").HasKey(k => k.ID);

@@ -1,6 +1,8 @@
-@using Entities.Concrete
 @model List<Destination>
 
+@{
+    var img = "";
+}
 <section class="w3l-grids-3 py-5">
     <div class="container py-md-5">
       <div class="title-content text-left mb-lg-5 mb-4">
@@ -11,20 +13,23 @@
   <!--/row-grids-->
         @foreach (var item in Model)
         {
-       
+          
+          img = item.DestinationImages.Count < 1 ? "" : item.DestinationImages.First().PathName;
+         
         <div class="col-lg-6 subject-card mt-lg-0 mt-4">
           <div class="subject-card-header p-4">
             <a href="#" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
-                  <img src="@item.Image" class="img-fluid" alt="">
+                 
+                  <img src='@img' class="img-fluid" alt=''>
                 </div>
                 <div class="col-sm-7 subject-content mt-sm-0 mt-4">
                   <h4>@item.City</h4>
                   <p>@item.DayNight</p>
                   <div class="dst-btm">
                     <h6 class=""> Kapasite </h6>
-                    <span>@item.Capacity Kişilik </span>
+                    <span>@item.Capacity Kişilik</span>
                   </div>
                   <div class="dst-btm">
                     <h6 class=""> Fiyat </h6>

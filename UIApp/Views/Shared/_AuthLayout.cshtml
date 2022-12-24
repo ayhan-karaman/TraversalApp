@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+  <title>@ViewData["Title"] - KARADENİZ TUR</title>
+  <!-- loader-->
+  <link href="~/css/pace.min.css" rel="stylesheet"/>
+  <script src="~/js/pace.min.js"></script>
+  <!--favicon-->
+  <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+  <!-- Bootstrap core CSS-->
+  <link href="~/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- animate CSS-->
+  <link href="~/css/animate.css" rel="stylesheet" type="text/css"/>
+  <!-- Icons CSS-->
+  <link href="~/css/icons.css" rel="stylesheet" type="text/css"/>
+  <!-- Custom Style-->
+  <link href="~/css/app-style.css" rel="stylesheet"/>
+  
+</head>
+
+<body class="bg-theme bg-theme1">
+
+<!-- start loader -->
+   <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
+   <!-- end loader -->
+
+<!-- Start wrapper-->
+<div id="wrapper">
+        <div class="loader-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+            
+          @RenderBody();  
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+        <div class="right-sidebar">
+    <div class="switcher-icon">
+     <a asp-action="Index" title="Ana Sayfaya Geri Dön" asp-controller="Home">
+        <i class="fa fa-backward"></i>
+     </a>
+    </div>
+    
+   </div>
+ </div>
+<!-- End wrapper-->
+  <!-- Bootstrap core JavaScript-->
+  <script src="~/js/jquery.min.js"></script>
+  <script src="~/js/popper.min.js"></script>
+  <script src="~/js/bootstrap.min.js"></script>
+	
+  
+  <!-- Custom scripts -->
+  <script src="~/js/app-script.js"></script>
+  
+
+
+</body>
+</html>
