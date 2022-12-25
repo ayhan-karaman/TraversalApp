@@ -346,7 +346,23 @@ hr {
     -o-transition: all .3s ease;
     transition: all .3s ease;
 }
-
+.route-home-icon{
+	width: 40px;
+    height: 40px;
+	line-height:40px;
+    background: #000;
+	text-align:center;
+	font-size:22px;
+	color:#fff;
+	cursor: pointer;
+    display: inline-block;
+	box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
 .switcher-icon{
 	width: 40px;
     height: 40px;
@@ -360,7 +376,7 @@ hr {
 	box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
     position: fixed;
     right: 0;
-    top: 15rem;
+    bottom: 0;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
 	-webkit-transition: all .3s ease;
@@ -2998,7 +3014,7 @@ table.grid td {
 [class*="icheck-material"] {
   min-height: 22px;
   margin-top: 6px;
-  margin-bottom: 6px 
+  margin-bottom: 6px; 
   padding-left: 0px; }
   [class*="icheck-material"] > label {
     padding-left: 29px !important;

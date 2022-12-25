@@ -16,3 +16,20 @@
  
   <!-- Index js -->
   <script src="~/assets/js/index.js"></script>
+  <script>
+       $('.change-lock i').on('click', function() {
+         if($(this).attr('class') === "fa fa-lock")
+          {
+             $(this).parent().parent().children('input').attr('type', 'text')
+              
+              return $(this).attr('class', 'fa fa-unlock')
+          }
+         if($(this).attr('class') === "fa fa-unlock")
+         {
+            $(this).parent().parent().children('input').attr('type', 'password')
+
+            return  $(this).attr('class', 'fa fa-lock') 
+         }
+
+       })
+    </script>

@@ -19,10 +19,12 @@ namespace UIApp.Controllers
     {
 
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AuthController(UserManager<AppUser> userManager)
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         //[HttpGet]
@@ -43,7 +45,8 @@ namespace UIApp.Controllers
            
             if(user.Password == user.ConfirmPassword)
             {
-                    var result = await _userManager.CreateAsync(appNewUser, user.Password = "");
+                    user.Password = user.Password != null ? user.Password : "";
+                    var result = await _userManager.CreateAsync(appNewUser, user.Password);
                     if(result.Succeeded)
                     {
                         return RedirectToAction("Signin");
@@ -63,14 +66,27 @@ namespace UIApp.Controllers
         [HttpGet]
         public IActionResult Signin()
         {
+            
             return View();
         }
 
-        // [HttpPost]
-        // public IActionResult Signin(string s)
-        // {
-        //     return View();
-        // }
+        [HttpPost]
+        public async Task<IActionResult> Signin(UserLoginViewModel user)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, true);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Profile", new{area = "Member"});
+                }
+                else
+                {
+                    return RedirectToAction("Signin", "Auth");
+                }
+            }
+            return View(user);
+        }
 
         
     }

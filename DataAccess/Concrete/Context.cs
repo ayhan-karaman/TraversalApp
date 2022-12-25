@@ -33,42 +33,6 @@ namespace DataAccess.Concrete
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Ignore <IdentityUserLogin<int>>();
-            modelBuilder.Ignore <IdentityUserRole<int>>();
-            modelBuilder.Ignore<IdentityUserClaim<int>>();
-            modelBuilder.Ignore<IdentityUserToken<int>>();
-        
-            modelBuilder.Entity<AppUser>(x => {
-                x.ToTable("users").HasKey(k => k.Id);
-                x.Property(p => p.Id).HasColumnName("user_id");
-                x.Property(p => p.Name).HasColumnName("name");
-                x.Property(p => p.Surname).HasColumnName("sur_name");
-                x.Property(p => p.ImageUrl).HasColumnName("image_url");
-                x.Property(p => p.Email).HasColumnName("email");
-                x.Property(p => p.AccessFailedCount).HasColumnName("access_faild_count");
-                x.Property(p => p.ConcurrencyStamp).HasColumnName("concurrency_stamp");
-                x.Property(p => p.EmailConfirmed).HasColumnName("email_confirmed");
-                x.Property(p => p.UserName).HasColumnName("user_name");
-                x.Property(p => p.NormalizedEmail).HasColumnName("normalized_email");
-                x.Property(p => p.PasswordHash).HasColumnName("password_hash");
-                x.Property(p => p.Gender).HasColumnName("gender");
-                x.Property(p => p.PhoneNumber).HasColumnName("phone_number");
-                x.Property(p => p.NormalizedUserName).HasColumnName("normalized_user_name");
-                x.Property(p => p.TwoFactorEnabled).HasColumnName("two_factor_enabled");
-                x.Property(p => p.LockoutEnabled).HasColumnName("lockout_enabled");
-                x.Property(p => p.LockoutEnd).HasColumnName("lockout_end");
-                x.Property(p => p.PhoneNumberConfirmed).HasColumnName("phone_number_confirmed");
-                x.Property(p => p.SecurityStamp).HasColumnName("security_stamp");
-            });
-            modelBuilder.Entity<AppRole>(x => {
-                x.ToTable("roles").HasKey(k => k.Id);
-                x.Property(p => p.Id).HasColumnName("role_id");
-                x.Property(p => p.Name).HasColumnName("role_name");
-                x.Property(p => p.NormalizedName).HasColumnName("normalized_name");
-                x.Property(p => p.ConcurrencyStamp).HasColumnName("concurrency_stamp");
-            });
-           
-            
             modelBuilder.Entity<About>(x => {
                 x.ToTable("abouts").HasKey(k => k.ID);
                 x.Property(p => p.ID).HasColumnName("about_id");
@@ -191,6 +155,8 @@ namespace DataAccess.Concrete
                 x.Property(p => p.ClientImage).HasColumnName("client_image");
                 x.Property(p => p.Status).HasColumnName("status");
             });
+
+            base.OnModelCreating(modelBuilder);
 
         }
     }
