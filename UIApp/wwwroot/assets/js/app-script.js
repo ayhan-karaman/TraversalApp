@@ -148,10 +148,6 @@ $(function () {
       $('body').attr('class', 'bg-theme bg-theme15');
     }
 
-
-   
-
-
-
+    
 });
 

@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=postgres; Password=Burcum2855");
+            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=<Your Username>; Password=<Your Password>");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<About2> About2s { get; set; }
@@ -29,9 +29,22 @@ namespace DataAccess.Concrete
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<SubAbout> SubAbouts { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Reservation>(x => {
+                x.ToTable("reservations").HasKey(k => k.ID);
+                x.Property(p => p.ID).HasColumnName("reservation_id");
+                x.Property(p => p.AppUserId).HasColumnName("app_user_id");
+                x.Property(p => p.Description).HasColumnName("description");
+                x.Property(p => p.PersonCount).HasColumnName("person_count");
+                x.Property(p => p.ReservationDate).HasColumnName("reservation_date");
+                x.Property(p => p.DestinationID).HasColumnName("destination_id");
+                x.Property(p => p.Status).HasColumnName("status").HasDefaultValue("Onay Bekliyor");
+                x.HasOne(p =>p.AppUser);
+                x.HasOne(p =>p.Destination);
+            });
             
             modelBuilder.Entity<About>(x => {
                 x.ToTable("abouts").HasKey(k => k.ID);
@@ -77,6 +90,7 @@ namespace DataAccess.Concrete
                 x.Property(p => p.Status).HasColumnName("status");
                 x.HasMany(x => x.OtherDetails);
                 x.HasMany(x => x.DestinationImages);
+                x.HasMany(x => x.Reservations);
             });
             modelBuilder.Entity<Comment>(x => {
                 x.ToTable("comments").HasKey(k => k.ID);

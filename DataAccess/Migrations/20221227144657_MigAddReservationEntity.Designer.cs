@@ -3,15 +3,17 @@ using System;
 using DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221227144657_MigAddReservationEntity")]
+    partial class MigAddReservationEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -501,10 +503,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("reservation_date");
 
-                    b.Property<string>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("text")
-                        .HasDefaultValue("Onay Bekliyor")
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean")
                         .HasColumnName("status");
 
                     b.HasKey("ID");

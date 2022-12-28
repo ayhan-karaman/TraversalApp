@@ -32,4 +32,17 @@
          }
 
        })
+      const getMinDate = () => {
+      var today  = new Date();
+      //min="1980-01-01"
+      today.setDate(today.getDate());
+      return today.toISOString().slice(0,10)
+      }
+     
+      $('#date').val(getMinDate());
+      $('#date').attr('min', getMinDate());
+      $('#date').click(()=> console.log(
+        $('.datetimepicker')
+      ))
+    
     </script>

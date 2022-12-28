@@ -61,6 +61,9 @@ namespace UIApp
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
 
+            services.AddScoped<IReservationService, ReservationManager>();
+            services.AddScoped<IReservationDal, EfReservationDal>();
+
            
             services.AddMvc(config => {
                 

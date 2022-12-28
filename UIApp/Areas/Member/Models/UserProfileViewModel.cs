@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace UIApp.Areas.Member.Models
 {
@@ -15,5 +16,6 @@ namespace UIApp.Areas.Member.Models
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string ImageUrl { get; set; }
+        public IFormFile FormFile { get; set; }
     }
 }

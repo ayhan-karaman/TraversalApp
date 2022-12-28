@@ -16,6 +16,7 @@ namespace Entities.Concrete
         public bool Status { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
         public ICollection<DestinationImage> DestinationImages { get; set; }
         public ICollection<OtherDetails> OtherDetails { get; set; }
     }
