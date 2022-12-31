@@ -9,6 +9,8 @@ namespace DataAccess.Abstract
 {
     public interface IReservationDal:IGenericRepository<Reservation>
     {
-        
+        List<Reservation> GetAllReservationsByWaitApproval(int userId);
+        List<Reservation> GetAllReservationsByOld(int userId);
+        List<Reservation> GetAllReservationsByCurrent(int userId);
     }
 }

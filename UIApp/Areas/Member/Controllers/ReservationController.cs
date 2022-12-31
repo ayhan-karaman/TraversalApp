@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.IdentityConcrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UIApp.Areas.Member.Models;
@@ -18,25 +20,39 @@ namespace UIApp.Areas.Member.Controllers
         
         private readonly IDestinationService _destinationService;
         private readonly IReservationService _reservationService;
-    
+        private readonly UserManager<AppUser> _userManager;
 
-        public ReservationController(IDestinationService destinationService, IReservationService reservationService)
+
+        public ReservationController(IDestinationService destinationService, IReservationService reservationService, UserManager<AppUser> userManager)
         {
             _destinationService = destinationService;
             _reservationService = reservationService;
+            _userManager = userManager;
         }
 
-        public IActionResult MyCurrentReservations()
+        public async Task<IActionResult> MyCurrentReservations()
         {
-            return View();
+            var value = await _userManager.FindByNameAsync(User.Identity.Name);
+            
+            var  reservationList = _reservationService.GetAllReservationByUserIdAndStatusCurrent(value.Id);
+         
+            return View(reservationList);
         }
-        public IActionResult MyOldReservations()
+        public async Task<IActionResult> MyOldReservations()
         {
-            return View();
+            var value = await _userManager.FindByNameAsync(User.Identity.Name);
+            
+            var  reservationList = _reservationService.GetAllReservationByUserIdAndStatusOld(value.Id);
+         
+            return View(reservationList);
         }
-        public IActionResult MyWaitingForApprovalReservations()
+        public async Task<IActionResult> MyWaitingForApprovalReservations()
         {
-            return View();
+            var value = await _userManager.FindByNameAsync(User.Identity.Name);
+            
+            var  reservationList = _reservationService.GetAllReservationByUserIdAndStatusWaitApproval(value.Id);
+         
+            return View(reservationList);
         }
 
         [HttpGet]
@@ -53,11 +69,12 @@ namespace UIApp.Areas.Member.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewReservation(Reservation reservation)
+        public async Task<IActionResult> NewReservation(Reservation reservation)
         {
-            reservation.AppUserId = 1;
+            var value = await _userManager.FindByNameAsync(User.Identity.Name);
+            reservation.AppUserId = value.Id;
             _reservationService.Add(reservation);
-            return RedirectToAction("MyCurrentReservation");
+            return RedirectToAction("MyWaitingForApprovalReservations", "Reservation", new{area = "Member"});
         }
     }
 }

@@ -32,6 +32,21 @@ namespace Business.Concrete
             return _reservationDal.GetAll();
         }
 
+        public List<Reservation> GetAllReservationByUserIdAndStatusCurrent(int userId)
+        {
+            return _reservationDal.GetAllReservationsByCurrent(userId);
+        }
+
+        public List<Reservation> GetAllReservationByUserIdAndStatusOld(int userId)
+        {
+            return _reservationDal.GetAllReservationsByOld(userId);
+        }
+
+        public List<Reservation> GetAllReservationByUserIdAndStatusWaitApproval(int userId)
+        {
+            return _reservationDal.GetAllReservationsByWaitApproval(userId);
+        }
+
         public Reservation GetById(int id)
         {
             return _reservationDal.Get(x => x.ID == id);

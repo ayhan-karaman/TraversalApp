@@ -1,0 +1,40 @@
+@model List<Reservation>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!--  Content Start  -->
+      <div class="row  m-0">
+       
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-lg-6 col-xl-3 ">
+                <div class="card mt-3">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="card-header d-flex justify-content-between">
+                                <h5 class="mt-3 text-warning">@item.Destination.City</h5>
+                                <span class="rounded-circle overflow-hidden">
+                                    <img   width="70" height="70"  src="@item.Destination.DestinationImages.First().PathName" alt="">
+                                </span>
+                                
+                            </div>
+                            <h5 class="mt-2 text-warning">Fiyatı   <small class="float-right text-white">2250 ₺</small></h5>
+                            <h5 class="mt-2 text-warning">Tarih  <small class="float-right text-white">@item.ReservationDate.ToString("dd.MM.yyyy")</small></h5>
+                            <h5 class="mt-2 text-warning">Sayı   <small class="float-right text-white">@item.PersonCount</small></h5>
+                            <h5 class="mt-2 text-warning">Durum  <small class="float-right text-white">@item.Status</small></h5>
+                          @if(item.Status == "Onay Bekliyor")
+                          {
+                            <a class="btn btn-light btn-block mt-4">İptal Et <i class="zmdi zmdi-alert-polygon text-danger"></i></a>
+                          }
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+            
+ </div> 
+ </div>
+ <!-- Content End -->
+    </div>
+</div>

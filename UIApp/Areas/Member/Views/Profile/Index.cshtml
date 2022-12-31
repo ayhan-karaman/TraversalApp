@@ -12,11 +12,13 @@
   <div class="container-fluid">
 
       <div class="row mt-3">
-        <div class="col-lg-4">
-           <div class="card profile-card-2">
+        <div class="col-lg-12 ">
+           <div class="card profile-card-2 d-flex">
             <div class="card-img-block">
-                <img class="img-fluid" src="/images/1.png" alt="Card image cap">
+                <img style="background-position:center;" class="img-fluid" src="~/images/banner1.jpg" alt="Card image cap">
+               
             </div>
+          
             <div class="card-body pt-5">
                 <img src="@Image" alt="@Image" class="profile">
                 <h5 class="card-title">@Model.Name @Model.SurName</h5>
@@ -25,91 +27,36 @@
                   <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
 				  <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
 				  <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                  <div class="float-right">
+                  <a href="javascript:void();" class="btn btn-light px-2">  Siteye Git</a>
+				  <a href="javascript:void();"> </a>
+				  <a href="javascript:void();"></a>
                 </div>
+                </div>
+                
             </div>
-
+          
            </div>
-
+            
         </div>
 
-        <div class="col-lg-8">
+        <div class="col-lg-12">
            <div class="card">
             <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
                 <li class="nav-item">
-                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link active"><i class="icon-note"></i> <span class="hidden-xs">Düzenle</span></a>
+                    <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active"><i class="icon-user"></i> <span class="hidden-xs">Profil</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Düzenle</span></a>
                 </li>
             </ul>
             <div class="tab-content p-3">
                 
-                <div class="tab-pane active" id="edit">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Adınız</label>
-                            <div class="col-lg-9">
-                                <input asp-for="Name" class="form-control" type="text" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Soyadınız</label>
-                            <div class="col-lg-9">
-                                <input asp-for="SurName" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">E-Posta adresiniz</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" asp-for="Email" type="email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Resim Seç</label>
-                            <div class="col-lg-9">
-                                <input asp-for="FormFile" class="form-control" type="file">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Telefon</label>
-                            <div class="col-lg-9">
-                                <input asp-for="PhoneNumber" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Kullanıcı adınız</label>
-                            <div class="col-lg-9">
-                                <input asp-for="UserName" class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Şifreniz</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" asp-for="Password" type="password">
-                                <div class="form-control-position change-lock">
-                                    <i class="fa fa-lock"></i>
-                                </div>
-                                <span class="text-danger" asp-validation-for="Password"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Şifreyi onayla</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" asp-for="ConfirmPassword">
-                                <div class="form-control-position change-lock">
-                                    <i class="fa fa-lock"></i>
-                                </div>
-                                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
-                            </div>
-                             
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Vazgeç">
-                                <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet">
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                @await Html.PartialAsync("~/Areas/Member/Views/MemberPartial/ProfilePartial.cshtml")
+                @await Html.PartialAsync("~/Areas/Member/Views/MemberPartial/UserEditPartial.cshtml")
+                
+
             </div>
         </div>
       </div>

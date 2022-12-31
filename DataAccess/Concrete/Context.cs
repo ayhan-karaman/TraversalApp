@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=<Your Username>; Password=<Your Password>");
+            optionsBuilder.UseNpgsql("Host=localhost; Database=traversalDb; Username=<your_username>; Password=<your_password>");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<About2> About2s { get; set; }

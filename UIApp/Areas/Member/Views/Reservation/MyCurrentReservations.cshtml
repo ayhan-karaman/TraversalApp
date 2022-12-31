@@ -1,11 +1,8 @@
 
+@model List<Reservation>
+
 @{
-     ViewData["Title"]= "Profile";
+     ViewData["Title"]= "Profil - Onaylanmış Rezervasyonlarım";
      Layout = "~/Views/Shared/_UserLayout.cshtml";
  }
-
-<div class="content-wrapper">
-    <div class="container-fluid">
-        <h1>Onaylanmış Rezervasyonlarım</h1>
-    </div>
-</div>
+ @await Html.PartialAsync("~/Areas/Member/Views/MemberPartial/ReservationListPartial.cshtml", Model)
