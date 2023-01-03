@@ -1,0 +1,23 @@
+@model List<Guide>
+
+     
+    @foreach (var item in Model)
+    {
+         <div class="card">
+         <div class="media align-items-center p-3">
+                   <div>
+                       <img src="@item.Image" class="skill-img" alt="skill img">
+                   </div>
+                     <div class="media-body text-left ml-3">
+                       <div class="progress-wrapper">
+                         <p>@item.Name <span class="float-right" style="margin-right: 5px;"><a href="#"><i class="fa fa-instagram"></i></a></span></p>
+    
+                        </div>                   
+                    </div>
+                  </div>
+            
+           <div class="card-footer" style="font-size: 12px;">@item.Description</div>
+          </div>
+    }
+
+

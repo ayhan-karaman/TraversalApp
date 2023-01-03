@@ -2,13 +2,14 @@
 <div class="tab-pane active " id="profile">
    <h5 class="mb-3">Kullanıcı Profili</h5>
     <div class="row d-flext justify-content-between">
-        <div class="card col-md-3">
+        <div class="card profile-scroll col-md-4">
             <div class="card-header">Rehberler</div>
-            <div class="card-body">
-
-            </div>
+            
+                  @await Component.InvokeAsync("GuideList")
+            
+          
         </div>
-        <div class="card col-md-4">
+        <div class="card profile-scroll col-md-3" style="font-size: 15px;">
             <div class="card-header">Genel Bilgiler</div>
             <div class="card-body">
             <p class="text-white mb-3">
@@ -17,13 +18,13 @@
                 edebilir ve iletişim detaylarına erişebilirsiniz. 
             </p>
             <hr>   
-            <h5>Ad Soyad <span class="mx-3 text-warning">@Model.Name @Model.SurName</span></h5>
-            <h5>E-Posta <span class="mx-3 text-warning">@Model.Email</span></h5>
-            <h5>Telefon <span class="mx-3 text-warning">@Model.PhoneNumber</span></h5>
-            <h5>Konum <span class="mx-3 text-warning">Türkiye</span></h5>
+            <div>Ad Soyad:<span style="font-size: 13px;" class="mx-3 text-warning">@Model.Name @Model.SurName</span></div>
+            <div>E-Posta:<span style="font-size: 13px;" class="mx-3 text-warning">@Model.Email</b></div>
+            <div>Telefon:<span style="font-size: 13px;" class="mx-3 text-warning">@Model.PhoneNumber</span></div>
+            <div>Konum : <span style="font-size: 13px;" class="mx-3 text-warning">Türkiye</span></div>
             </div>
         </div>
-        <div class="card col-md-3">
+        <div class="card profile-scroll col-md-4">
             <div class="card-body">Basic card</div>
         </div>
     </div>

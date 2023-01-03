@@ -3675,5 +3675,10 @@ table.grid td {
 }
 
 
+.profile-scroll {
+    max-height: 400px !important;
+    overflow-y: auto !important; 
+}
+
 
 

@@ -3653,6 +3653,11 @@ table.grid td {
 
 }
 
+.profile-scroll {
+    max-height: 50px !important;
+    overflow-y: auto !important; 
+}
+
 
 
 
