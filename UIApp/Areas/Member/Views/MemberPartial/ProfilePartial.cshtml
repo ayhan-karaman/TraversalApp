@@ -1,15 +1,10 @@
 @model UserProfileViewModel
 <div class="tab-pane active " id="profile">
+    @* class="col-md-3-4" *@
    <h5 class="mb-3">Kullanıcı Profili</h5>
-    <div class="row d-flext justify-content-between">
-        <div class="card profile-scroll col-md-4">
-            <div class="card-header">Rehberler</div>
-            
+    <div class="row d-flex justify-content-around">
                   @await Component.InvokeAsync("GuideList")
-            
-          
-        </div>
-        <div class="card profile-scroll col-md-3" style="font-size: 15px;">
+        <div class="card  col-md-5" style="font-size: 15px;">
             <div class="card-header">Genel Bilgiler</div>
             <div class="card-body">
             <p class="text-white mb-3">
@@ -24,8 +19,6 @@
             <div>Konum : <span style="font-size: 13px;" class="mx-3 text-warning">Türkiye</span></div>
             </div>
         </div>
-        <div class="card profile-scroll col-md-4">
-            <div class="card-body">Basic card</div>
-        </div>
+         @* @await Component.InvokeAsync("PlatformSettings") *@
     </div>
 </div>

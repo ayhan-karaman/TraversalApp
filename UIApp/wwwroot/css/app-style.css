@@ -3657,9 +3657,18 @@ table.grid td {
     max-height: 50px !important;
     overflow-y: auto !important; 
 }
+.col-md-3-4 {
+    -ms-flex: 0 0 32.333333%;
+    flex: 0 0 32.333333%;
+    max-width: 32.333333%;
+  }
 
-
-
+  .col-md-3-4{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 
 
 

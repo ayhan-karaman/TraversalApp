@@ -29,7 +29,7 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = context.Reservations
                 .Include(x => x.Destination)
                 .ThenInclude(x => x.DestinationImages)
-                .Where(x => x.AppUserId == userId && (x.Status == "Tamamlanmış" || x.Status == "Acente İptali" || x.Status == "Müşteri İptali"));
+                .Where(x => x.AppUserId == userId && (x.Status == "Tamamlandı" || x.Status == "Acente İptali" || x.Status == "Müşteri İptali"));
                 return result.ToList();
             }
         }

@@ -3680,5 +3680,17 @@ table.grid td {
     overflow-y: auto !important; 
 }
 
+.col-md-3-4 {
+    -ms-flex: 0 0 32.999999%;
+    flex: 0 0 32.999999%;
+    max-width: 32.999999%;
+  }
+
+  .col-md-3-4{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 
 
