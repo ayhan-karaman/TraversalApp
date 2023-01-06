@@ -61,7 +61,7 @@ namespace UIApp.Areas.Member.Controllers
             var reservationViewModel = new ReservationAddViewModel
             {
                   Reservation = new Reservation(),
-                  Destinations = _destinationService.GetAll()
+                  Destinations = _destinationService.GetAll().Data
 
             };
             

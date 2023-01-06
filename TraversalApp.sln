@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIApp", "UIApp\UIApp.csproj", "{866AD6CB-2367-4494-9F54-15B3B81B444C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BAE613C7-7925-431F-8C67-6B15B6FA50BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{866AD6CB-2367-4494-9F54-15B3B81B444C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866AD6CB-2367-4494-9F54-15B3B81B444C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866AD6CB-2367-4494-9F54-15B3B81B444C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE613C7-7925-431F-8C67-6B15B6FA50BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE613C7-7925-431F-8C67-6B15B6FA50BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE613C7-7925-431F-8C67-6B15B6FA50BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE613C7-7925-431F-8C67-6B15B6FA50BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

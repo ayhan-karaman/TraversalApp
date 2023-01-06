@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -24,9 +25,9 @@ namespace Business.Concrete
             _testimonialDal.Delete(entity);
         }
 
-        public List<Testimonial> GetAll()
+        public IDataResult<List<Testimonial>> GetAll()
         {
-            return _testimonialDal.GetAll();
+            return new SuccessDataResult<List<Testimonial>>(_testimonialDal.GetAll());
         }
 
         public Testimonial GetById(int id)

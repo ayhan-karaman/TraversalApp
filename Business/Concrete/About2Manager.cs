@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -21,7 +22,7 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public List<About2> GetAll()
+        public IDataResult<List<About2>> GetAll()
         {
             throw new NotImplementedException();
         }

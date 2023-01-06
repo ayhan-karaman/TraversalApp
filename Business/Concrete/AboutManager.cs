@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -33,9 +34,9 @@ namespace Business.Concrete
             return _aboutDal.Get(x => x.ID == id);
         }
 
-        public List<About> GetAll()
+        public IDataResult<List<About>> GetAll()
         {
-            return _aboutDal.GetAll();
+            return new SuccessDataResult<List<About>> (_aboutDal.GetAll());
         }
 
         public void Update(About entity)

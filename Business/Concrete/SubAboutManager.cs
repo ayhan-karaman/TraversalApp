@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -24,9 +25,9 @@ namespace Business.Concrete
             _subAboutDal.Delete(entity);
         }
 
-        public List<SubAbout> GetAll()
+        public IDataResult<List<SubAbout>> GetAll()
         {
-           return _subAboutDal.GetAll();
+           return new SuccessDataResult<List<SubAbout>>(_subAboutDal.GetAll());
         }
 
         public SubAbout GetById(int id)

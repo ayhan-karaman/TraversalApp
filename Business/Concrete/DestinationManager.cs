@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
+using System;
+using Microsoft.AspNetCore.Http;
+using Core.Utilities.Results;
 
 namespace Business.Concrete
 {
@@ -12,11 +16,13 @@ namespace Business.Concrete
         public DestinationManager(IDestinationDal destinationDal)
         {
             _destinationDal = destinationDal;
+          
         }
 
         public void Add(Destination entity)
         {
-            _destinationDal.Insert(entity);
+             _destinationDal.Insert(entity);
+
         }
 
         public void Delete(Destination entity)
@@ -24,14 +30,14 @@ namespace Business.Concrete
             _destinationDal.Delete(entity);
         }
 
-        public List<Destination> GetAllDestinationIncludes()
+        public IDataResult<List<Destination>> GetAllDestinationIncludes()
         {
-             return _destinationDal.GetAllDestinationIncludesDal();
+             return new SuccessDataResult<List<Destination>>(_destinationDal.GetAllDestinationIncludesDal());
         }
 
-        public List<Destination> GetAll()
+        public IDataResult<List<Destination>> GetAll()
         {
-             return _destinationDal.GetAll();
+             return new SuccessDataResult<List<Destination>>(_destinationDal.GetAllDestinationIncludesDal());
         }
 
         public Destination GetById(int id)
@@ -48,6 +54,10 @@ namespace Business.Concrete
         {
             return _destinationDal.GetDestinationIncludesDal(x => x.ID == id);
         }
+
+    
+
+       
     }
 
 }

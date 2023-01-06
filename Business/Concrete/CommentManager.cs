@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -29,9 +30,9 @@ namespace Business.Concrete
            _commentDal.Delete(entity);
         }
 
-        public List<Comment> GetAll()
+        public IDataResult<List<Comment>> GetAll()
         {
-            return _commentDal.GetAll();
+            return new SuccessDataResult<List<Comment>>(_commentDal.GetAll());
         }
 
         public List<Comment> GetAllByDestinationID(int destinationId)

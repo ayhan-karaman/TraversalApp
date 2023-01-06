@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -24,9 +25,9 @@ namespace Business.Concrete
             _guideDal.Delete(entity);
         }
 
-        public List<Guide> GetAll()
+        public IDataResult<List<Guide>> GetAll()
         {
-            return _guideDal.GetAll();
+            return new SuccessDataResult<List<Guide>>(_guideDal.GetAll());
         }
 
         public Guide GetById(int id)

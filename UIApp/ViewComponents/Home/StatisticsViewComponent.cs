@@ -20,8 +20,8 @@ namespace UIApp.ViewComponents.Home
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.v1 = _destinationService.GetAll().Count;
-            ViewBag.v2 = _guideService.GetAll().Count;
+            ViewBag.v1 = _destinationService.GetAll().Data.Count;
+            ViewBag.v2 = _guideService.GetAll().Data.Count;
             ViewBag.v3 = 333;
             ViewBag.v4 = 28;
             return View();

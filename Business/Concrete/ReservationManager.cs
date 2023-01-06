@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -27,9 +28,9 @@ namespace Business.Concrete
             _reservationDal.Insert(entity);
         }
 
-        public List<Reservation> GetAll()
+        public IDataResult<List<Reservation>> GetAll()
         {
-            return _reservationDal.GetAll();
+            return new SuccessDataResult<List<Reservation>>(_reservationDal.GetAll());
         }
 
         public List<Reservation> GetAllReservationByUserIdAndStatusCurrent(int userId)

@@ -1,0 +1,44 @@
+@model List<Destination>
+@{
+    ViewData["Title"] = "Yönetici Kontrol";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ <div class="card">
+                <h5 class="card-header">Rotalar</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead class="table-striped">
+                      <tr>
+                        <th>#ID</th>
+                        <th>Şehir</th>
+                        <th>Fiyat</th>
+                        <th>Kapasite</th>
+                        <th class="d-flex justify-content-around">
+                         <a 
+                          class="btn rounded-pill btn-success"
+                          href="/Admin/Destination/AddDestination"
+                         >Ekle</a>
+                            </th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      @foreach (var item in Model)
+                      {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.City</td>
+                            <td>@item.Price ₺</td>
+                            <td>@item.Capacity</td>
+                            <td><a href="/Destination/DestinationDetails/@item.ID" class="btn rounded-pill btn-info">Siteye Git</a>
+                            <a asp-area="Admin" asp-controller="Destination" asp-action="UpdateDestination" asp-route-id="@item.ID" class="btn rounded-pill btn-warning">Güncelle</a>
+                            <a asp-area="Admin" asp-controller="Destination" asp-action="DeleteDestination" asp-route-id="@item.ID" class="btn rounded-pill btn-danger">Sil</a></td>
+                        </tr>
+                      }
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Bootstrap Table with Header Dark    -->

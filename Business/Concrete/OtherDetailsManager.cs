@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -27,9 +28,9 @@ namespace Business.Concrete
             _otherDetailsDal.Delete(entity);
         }
 
-        public List<OtherDetails> GetAll()
+        public IDataResult<List<OtherDetails>> GetAll()
         {
-            return _otherDetailsDal.GetAll();
+            return new SuccessDataResult<List<OtherDetails>>(_otherDetailsDal.GetAll());
         }
 
         public OtherDetails GetById(int id)

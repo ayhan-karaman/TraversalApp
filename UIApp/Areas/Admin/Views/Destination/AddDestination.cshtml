@@ -1,0 +1,88 @@
+@model DestinationAddViewModel
+@{
+    ViewData["Title"] = "Yönetici Kontrol";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row d-flex justify-content-center">
+ <div class="col-md-9 ml-3">
+                  <div class="card mb-4">
+                  
+                    <h5 class="card-header">Yeni Rota Ekle</h5>
+                   
+                    <form  method="post" enctype="multipart/form-data" class="card-body ">
+                        <div class="row">
+                                            <div class="row g-2">
+                                            <div class="col mb-0">
+                                              <label for="city" class="form-label">Şehir</label>
+                                              <input
+                                                type="text"
+                                                asp-for="Destination.City"
+                                                id="city"
+                                                class="form-control"
+                                                placeholder="Şehir"
+                                              />
+                                            </div>
+                                            <div class="col mb-0">
+                                              <label for="dayNight" class="form-label">Gün-Gece</label>
+                                              <input
+                                                type="text"
+                                                asp-for="Destination.DayNight"
+                                                id="dayNight"
+                                                class="form-control"
+                                                placeholder="Gün-Gece"
+                                              />
+                                            </div>
+                                          </div>
+                                          <div class="row g-2 mb-3">
+                                            <div class="col mb-0">
+                                              <label for="capacity" class="form-label">Kapasite</label>
+                                              <input
+                                                type="text"
+                                                asp-for="Destination.Capacity"
+                                                id="capacity"
+                                                class="form-control"
+                                                placeholder="Yolcu Kapasitesi"
+                                              />
+                                            </div>
+                                            <div class="col mb-0">
+                                              <label for="price" class="form-label">Fiyat</label>
+                                              <input
+                                                type="text"
+                                                asp-for="Destination.Price"
+                                                id="price"
+                                                class="form-control"
+                                                placeholder="Fiyat ₺, $"
+                                              />
+                                            </div>
+                                          </div>
+                                          <div class="col-12 mb">
+                                              <label for="city" class="form-label">Görsel Seç</label>
+                                              <input
+                                                multiple
+                                                type="file"
+                                                asp-for="FormFiles"
+                                                id="city"
+                                                class="form-control"
+                                                placeholder="Fotoğraf Seç"
+                                              />
+                                          </div>
+                                        <div class="col mb-3">
+                                              <label for="description" class="form-label">Açıklama</label>
+                                              <input
+                                                
+                                                type="text"
+                                                asp-for="Destination.Description"
+                                                id="description"
+                                                class="form-control"
+                                                placeholder="Açıklama giriniz"
+                                              />
+                                            </div>
+                                          </div>
+                                          <div class="card-footer">
+                              <button type="submit" class="btn btn-primary">Yeni Rotayı Oluştur</a>
+                        </div>
+                    </form>
+                 
+                  </div>
+                </div>
+</div>

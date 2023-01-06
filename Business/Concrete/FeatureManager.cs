@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -24,9 +25,9 @@ namespace Business.Concrete
             _featureDal.Delete(entity);
         }
 
-        public List<Feature> GetAll()
+        public IDataResult<List<Feature>> GetAll()
         {
-           return _featureDal.GetAll();
+           return new SuccessDataResult<List<Feature>>(_featureDal.GetAll());
         }
 
         public Feature GetById(int id)

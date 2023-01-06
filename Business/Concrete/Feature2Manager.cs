@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -18,7 +19,7 @@ namespace Business.Concrete
             throw new System.NotImplementedException();
         }
 
-        public List<Feature2> GetAll()
+        public IDataResult<List<Feature2>> GetAll()
         {
             throw new System.NotImplementedException();
         }
