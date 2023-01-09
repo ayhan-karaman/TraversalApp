@@ -9,12 +9,12 @@ namespace Business.Concrete
     public class NewsLetterManager : INewsLetterService
     {
         private readonly INewsLetterDal _newsLetterDal;
-        public void Add(NewsLetter entity)
+        public IResult Add(NewsLetter entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(NewsLetter entity)
+        public IResult Delete(NewsLetter entity)
         {
             throw new System.NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace Business.Concrete
             throw new System.NotImplementedException();
         }
 
-        public NewsLetter GetById(int id)
+        public IDataResult<NewsLetter> GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(NewsLetter entity)
+        public IResult Update(NewsLetter entity)
         {
             throw new System.NotImplementedException();
         }

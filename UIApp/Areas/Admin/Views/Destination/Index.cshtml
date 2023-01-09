@@ -6,6 +6,11 @@
 
  <div class="card">
                 <h5 class="card-header">Rotalar</h5>
+                @if(TempData["successMessage"] != null)
+                {
+                    <div class="alert alert-success">@TempData["successMessage"]</div>
+                }
+                
                 <div class="table-responsive text-nowrap">
                   <table class="table">
                     <thead class="table-striped">

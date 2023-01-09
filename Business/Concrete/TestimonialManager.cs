@@ -15,14 +15,16 @@ namespace Business.Concrete
             _testimonialDal = testimonialDal;
         }
 
-        public void Add(Testimonial entity)
+        public IResult Add(Testimonial entity)
         {
             _testimonialDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(Testimonial entity)
+        public IResult Delete(Testimonial entity)
         {
             _testimonialDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<Testimonial>> GetAll()
@@ -30,14 +32,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Testimonial>>(_testimonialDal.GetAll());
         }
 
-        public Testimonial GetById(int id)
+        public IDataResult<Testimonial> GetById(int id)
         {
-            return _testimonialDal.Get(x => x.ID == id);
+            return new SuccessDataResult<Testimonial>(_testimonialDal.Get(x => x.ID == id));
         }
 
-        public void Update(Testimonial entity)
+        public IResult Update(Testimonial entity)
         {
            _testimonialDal.Update(entity);
+            return new SuccessResult();
         }
     }
 

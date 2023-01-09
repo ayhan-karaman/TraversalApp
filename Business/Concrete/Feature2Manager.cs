@@ -9,12 +9,12 @@ namespace Business.Concrete
     public class Feature2Manager : IFeature2Service
     {
         private readonly IFeature2Dal _feature2Dal;
-        public void Add(Feature2 entity)
+        public IResult Add(Feature2 entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(Feature2 entity)
+        public IResult Delete(Feature2 entity)
         {
             throw new System.NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace Business.Concrete
             throw new System.NotImplementedException();
         }
 
-        public Feature2 GetById(int id)
+        public IDataResult<Feature2> GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(Feature2 entity)
+        public IResult Update(Feature2 entity)
         {
             throw new System.NotImplementedException();
         }

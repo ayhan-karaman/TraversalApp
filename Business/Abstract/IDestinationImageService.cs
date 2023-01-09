@@ -11,5 +11,6 @@ namespace Business.Abstract
     public interface IDestinationImageService:IGenericService<DestinationImage>
     {
         IResult AddImage(ICollection<IFormFile> files, int id);
+        IDataResult<List<DestinationImage>> GetByDestinationId(int destinationId);
     }
 }

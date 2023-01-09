@@ -18,8 +18,9 @@ namespace UIApp.ViewComponents.Comment
 
         public IViewComponentResult Invoke(int destinationId)
         {
-            var data = _commentService.GetAllByDestinationID(destinationId);
-            return View(data);
+            var result = _commentService.GetAllByDestinationID(destinationId);
+            
+            return View(result);
         }
     }
 }

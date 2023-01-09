@@ -18,16 +18,18 @@ namespace Business.Concrete
             _commentDal = commentDal;
         }
 
-        public void Add(Comment entity)
+        public IResult Add(Comment entity)
         {
             entity.CommentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             entity.State = true;
             _commentDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(Comment entity)
+        public IResult Delete(Comment entity)
         {
            _commentDal.Delete(entity);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Comment>> GetAll()
@@ -40,14 +42,15 @@ namespace Business.Concrete
             return _commentDal.GetAll(x => x.DestinationID == destinationId);
         }
 
-        public Comment GetById(int id)
+        public IDataResult<Comment> GetById(int id)
         {
-            return _commentDal.Get(x => x.ID == id);
+            return new SuccessDataResult<Comment> (_commentDal.Get(x => x.ID == id));
         }
 
-        public void Update(Comment entity)
+        public IResult Update(Comment entity)
         {
             _commentDal.Update(entity);
+             return new SuccessResult();
         }
     }
 }

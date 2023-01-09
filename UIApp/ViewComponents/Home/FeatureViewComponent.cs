@@ -18,8 +18,14 @@ namespace UIApp.ViewComponents.Home
 
         public IViewComponentResult Invoke()
         {
-            var data = _featureService.GetAll();
-            return View(data);
+            var result = _featureService.GetAll();
+            if(result.Success)
+                return View(result.Data);
+            else
+            {
+                ViewData.Add("message", result.Message);
+                return View();
+            }
         }
     }
 }

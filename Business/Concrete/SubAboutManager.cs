@@ -15,14 +15,16 @@ namespace Business.Concrete
             _subAboutDal = subAboutDal;
         }
 
-        public void Add(SubAbout entity)
+        public IResult Add(SubAbout entity)
         {
             _subAboutDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(SubAbout entity)
+        public IResult Delete(SubAbout entity)
         {
             _subAboutDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<SubAbout>> GetAll()
@@ -30,14 +32,15 @@ namespace Business.Concrete
            return new SuccessDataResult<List<SubAbout>>(_subAboutDal.GetAll());
         }
 
-        public SubAbout GetById(int id)
+        public IDataResult<SubAbout> GetById(int id)
         {
-            return _subAboutDal.Get(x => x.ID == id);
+            return new SuccessDataResult<SubAbout>(_subAboutDal.Get(x => x.ID == id));
         }
 
-        public void Update(SubAbout entity)
+        public IResult Update(SubAbout entity)
         {
             _subAboutDal.Update(entity);
+             return new SuccessResult();
         }
     }
 

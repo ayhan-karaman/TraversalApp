@@ -19,19 +19,21 @@ namespace Business.Concrete
             _aboutDal = aboutDal;
         }
 
-        public void Add(About entity)
+        public IResult Add(About entity)
         {
             _aboutDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(About entity)
+        public IResult Delete(About entity)
         {
            _aboutDal.Delete(entity);
+            return new SuccessResult();
         }
 
-        public About GetById(int id)
+        public IDataResult<About> GetById(int id)
         {
-            return _aboutDal.Get(x => x.ID == id);
+            return new SuccessDataResult<About>(_aboutDal.Get(x => x.ID == id));
         }
 
         public IDataResult<List<About>> GetAll()
@@ -39,9 +41,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<About>> (_aboutDal.GetAll());
         }
 
-        public void Update(About entity)
+        public IResult Update(About entity)
         {
             _aboutDal.Update(entity);
+            return new SuccessResult();
         }
     }
 }

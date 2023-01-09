@@ -18,14 +18,16 @@ namespace Business.Concrete
             _reservationDal = reservationDal;
         }
 
-        public void Add(Reservation entity)
+        public IResult Add(Reservation entity)
         {
             _reservationDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(Reservation entity)
+        public IResult Delete(Reservation entity)
         {
             _reservationDal.Insert(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<Reservation>> GetAll()
@@ -48,14 +50,15 @@ namespace Business.Concrete
             return _reservationDal.GetAllReservationsByWaitApproval(userId);
         }
 
-        public Reservation GetById(int id)
+        public IDataResult<Reservation> GetById(int id)
         {
-            return _reservationDal.Get(x => x.ID == id);
+            return new SuccessDataResult<Reservation>(_reservationDal.Get(x => x.ID == id));
         }
 
-        public void Update(Reservation entity)
+        public IResult Update(Reservation entity)
         {
             _reservationDal.Update(entity);
+             return new SuccessResult();
         }
     }
 }

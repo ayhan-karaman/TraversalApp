@@ -15,14 +15,16 @@ namespace Business.Concrete
             _guideDal = guideDal;
         }
 
-        public void Add(Guide entity)
+        public IResult Add(Guide entity)
         {
             _guideDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(Guide entity)
+        public IResult Delete(Guide entity)
         {
             _guideDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<Guide>> GetAll()
@@ -30,14 +32,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Guide>>(_guideDal.GetAll());
         }
 
-        public Guide GetById(int id)
+        public IDataResult<Guide> GetById(int id)
         {
-            return _guideDal.Get(x => x.ID == id);
+            return new SuccessDataResult<Guide>(_guideDal.Get(x => x.ID == id));
         }
 
-        public void Update(Guide entity)
+        public IResult Update(Guide entity)
         {
             _guideDal.Update(entity);
+             return new SuccessResult();
         }
     }
 

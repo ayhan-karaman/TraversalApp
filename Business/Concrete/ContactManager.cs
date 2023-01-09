@@ -12,12 +12,12 @@ namespace Business.Concrete
     public class ContactManager : IContactService
     {
         private readonly IContactDal _contactDal;
-        public void Add(Contact entity)
+        public IResult Add(Contact entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Contact entity)
+        public IResult Delete(Contact entity)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +27,12 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Contact GetById(int id)
+        public IDataResult<Contact> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Contact entity)
+        public IResult Update(Contact entity)
         {
             throw new NotImplementedException();
         }

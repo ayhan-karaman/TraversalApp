@@ -73,8 +73,11 @@ namespace UIApp.Areas.Member.Controllers
         {
             var value = await _userManager.FindByNameAsync(User.Identity.Name);
             reservation.AppUserId = value.Id;
-            _reservationService.Add(reservation);
-            return RedirectToAction("MyWaitingForApprovalReservations", "Reservation", new{area = "Member"});
+            var result =  _reservationService.Add(reservation);
+            if(result.Success)
+                return RedirectToAction("MyWaitingForApprovalReservations", "Reservation", new{area = "Member"});
+            return View();
+            
         }
     }
 }

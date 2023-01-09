@@ -1,4 +1,5 @@
-@model List<Destination>
+@using Core.Utilities.Results
+@model  IDataResult<List<Destination>>
 @{
     ViewData["Title"] = "Varış Noktaları";
    
@@ -21,24 +22,32 @@
   <div class="grids py-lg-5 py-md-4">
       <div class="container">
           <h3 class="hny-title mb-5">Varış Noktaları</h3>
-          <div class="row">
-            @foreach (var item in Model)
+           @if(!Model.Success)
             {
-                 <div class="col-lg-4 col-md-4 col-6 mt-md-0 mt-4">
-                  <div class="column">
-                      <a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID"><img src="@item.DestinationImages.First().PathName" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID">@item.City</a></h4>
-                          <p>@item.DayNight </p>
-                          <div class="dst-btm">
-                            <h6 class="">Fiyat </h6>
-                            <span>@item.Price ₺</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            } 
-             
-          </div>
+              <div class="alert alert-danger">@Model.Message</div>
+            }
+            else 
+            {
+              <div class="row">
+           
+                  @foreach (var item in Model.Data)
+                  {
+                      <div class="col-lg-4 col-md-4 col-6 mt-md-0 mt-4">
+                        <div class="column">
+                            <a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID"><img src="@item.DestinationImages.First().PathName" alt="" class="img-fluid"></a>
+                            <div class="info">
+                                <h4><a asp-controller="Destination" asp-action="DestinationDetails" asp-route-id="@item.ID">@item.City</a></h4>
+                                <p>@item.DayNight </p>
+                                <div class="dst-btm">
+                                  <h6 class="">Fiyat </h6>
+                                  <span>@item.Price ₺</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  } 
+                  
+                </div>
+            }
       </div>
 </div></section>

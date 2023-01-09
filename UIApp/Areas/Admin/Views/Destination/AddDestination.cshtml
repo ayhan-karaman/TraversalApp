@@ -8,7 +8,10 @@
                   <div class="card mb-4">
                   
                     <h5 class="card-header">Yeni Rota Ekle</h5>
-                   
+                    @if(TempData["errorMessage"] != null)
+                    {
+                        <h5>@TempData["errorMessage"]</h5>
+                    }
                     <form  method="post" enctype="multipart/form-data" class="card-body ">
                         <div class="row">
                                             <div class="row g-2">
@@ -56,12 +59,12 @@
                                             </div>
                                           </div>
                                           <div class="col-12 mb">
-                                              <label for="city" class="form-label">Görsel Seç</label>
+                                              <label for="image-file" class="form-label">Görsel Seç</label>
                                               <input
                                                 multiple
                                                 type="file"
                                                 asp-for="FormFiles"
-                                                id="city"
+                                                id="image-file"
                                                 class="form-control"
                                                 placeholder="Fotoğraf Seç"
                                               />

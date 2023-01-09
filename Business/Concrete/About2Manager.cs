@@ -12,12 +12,12 @@ namespace Business.Concrete
     public class About2Manager : IAbout2Service
     {
         private readonly IAbout2Dal _about2Dal;
-        public void Add(About2 entity)
+        public IResult Add(About2 entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(About2 entity)
+        public IResult Delete(About2 entity)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +27,12 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public About2 GetById(int id)
+        public IDataResult<About2> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(About2 entity)
+        public IResult Update(About2 entity)
         {
             throw new NotImplementedException();
         }

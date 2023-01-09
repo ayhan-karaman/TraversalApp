@@ -13,5 +13,7 @@ namespace Business.Abstract
     {
         IDataResult<List<Destination>> GetAllDestinationIncludes();
         Destination GetByIdDestinationIncludes(int id);
+
+        IResult AddDestinationAndImage(ICollection<IFormFile> files, Destination destination);
     }
 }

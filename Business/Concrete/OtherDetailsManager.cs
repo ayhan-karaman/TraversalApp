@@ -18,14 +18,16 @@ namespace Business.Concrete
             _otherDetailsDal = otherDetailsDal;
         }
 
-        public void Add(OtherDetails entity)
+        public IResult Add(OtherDetails entity)
         {
             _otherDetailsDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(OtherDetails entity)
+        public IResult Delete(OtherDetails entity)
         {
             _otherDetailsDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<OtherDetails>> GetAll()
@@ -33,14 +35,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OtherDetails>>(_otherDetailsDal.GetAll());
         }
 
-        public OtherDetails GetById(int id)
+        public IDataResult<OtherDetails> GetById(int id)
         {
-            return _otherDetailsDal.Get(x => x.ID == id);
+            return new SuccessDataResult<OtherDetails>(_otherDetailsDal.Get(x => x.ID == id));
         }
 
-        public void Update(OtherDetails entity)
+        public IResult Update(OtherDetails entity)
         {
             _otherDetailsDal.Update(entity);
+             return new SuccessResult();
         }
     }
 }

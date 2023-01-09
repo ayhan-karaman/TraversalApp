@@ -45,41 +45,45 @@ namespace UIApp.Areas.Admin.Controllers
         public IActionResult AddDestination(DestinationAddViewModel addViewModel)
         {
              
-           if(addViewModel.FormFiles.Count > 0 && addViewModel.FormFiles.Count < 4)
-            {
-                _destinationService.Add(addViewModel.Destination);
-                var result  =  _destinationImageService.AddImage(addViewModel.FormFiles, addViewModel.Destination.ID);
+           
+                var result =  _destinationService.AddDestinationAndImage(addViewModel.FormFiles, addViewModel.Destination);
                 if(!result.Success)
                 {
+                    TempData.Add("errorMessage", result.Message);
                     return RedirectToAction("AddDestination", "Destination", new{area = "Admin"});
                 }
-                return RedirectToAction("Index", "Destination", new{area = "Admin"});
-            }
-            
-            return RedirectToAction("AddDestination", "Destination", new{area = "Admin"});
+                    TempData.Add("successMessage", result.Message);
+                    return RedirectToAction("Index", "Destination", new{area = "Admin"});
         }
 
 
       
         public IActionResult DeleteDestination(int id)
         {
-              var destination = _destinationService.GetById(id);
-              _destinationService.Delete(destination);
-               return RedirectToAction("Index", "Destination", new{area = "Admin"});
+              var destination = _destinationService.GetById(id).Data;
+              var result =  _destinationService.Delete(destination);
+               if(result.Success)
+                    return RedirectToAction("Index", "Destination", new{area = "Admin"});
+                return RedirectToAction("Index", "Destination", new{area = "Admin"});
         }
 
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var value = _destinationService.GetById(id);
-            return View(value);
+            var result = _destinationService.GetById(id);
+            if(result.Success)
+                return View(result.Data);
+            return View(result.Data);
         }
 
         [HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            _destinationService.Update(destination);
-             return RedirectToAction("Index", "Destination", new{area = "Admin"});
+            Console.WriteLine(destination.City);
+            var result =  _destinationService.Update(destination);
+            if(!result.Success)
+                return RedirectToAction("UpdateDestination", "Destination", new{id = destination.ID});
+            return RedirectToAction("Index", "Destination", new{area = "Admin"});
         }
 
     }

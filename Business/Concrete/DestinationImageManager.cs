@@ -21,10 +21,11 @@ namespace Business.Concrete
             _destinationImageDal = destinationImageDal;
         }
 
-        public void Add(DestinationImage entity)
+        public IResult Add(DestinationImage entity)
         {
 
             _destinationImageDal.Insert(entity);
+            return new SuccessResult("");
         }
 
         public IResult AddImage(ICollection<IFormFile> files, int id)
@@ -46,16 +47,12 @@ namespace Business.Concrete
             else
                 return new ErrorResult("Üçten fazla resim ekleymezsiniz");
             
-
-
-            
-     
-            
         }
 
-        public void Delete(DestinationImage entity)
+        public IResult Delete(DestinationImage entity)
         {
             _destinationImageDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<DestinationImage>> GetAll()
@@ -63,14 +60,20 @@ namespace Business.Concrete
             return new SuccessDataResult<List<DestinationImage>>(_destinationImageDal.GetAll());
         }
 
-        public DestinationImage GetById(int id)
+        public IDataResult<List<DestinationImage>> GetByDestinationId(int destinationId)
         {
-            return _destinationImageDal.Get(x => x.ID == id);
+            return new SuccessDataResult<List<DestinationImage>>(_destinationImageDal.GetAll(x => x.DestinationID == destinationId));
         }
 
-        public void Update(DestinationImage entity)
+        public IDataResult<DestinationImage> GetById(int id)
+        {
+            return new SuccessDataResult<DestinationImage>  (_destinationImageDal.Get(x => x.ID == id));
+        }
+
+        public IResult Update(DestinationImage entity)
         {
             _destinationImageDal.Update(entity);
+             return new SuccessResult();
         }
 
 

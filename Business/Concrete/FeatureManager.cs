@@ -15,14 +15,16 @@ namespace Business.Concrete
             _featureDal = featureDal;
         }
 
-        public void Add(Feature entity)
+        public IResult Add(Feature entity)
         {
             _featureDal.Insert(entity);
+            return new SuccessResult("");
         }
 
-        public void Delete(Feature entity)
+        public IResult Delete(Feature entity)
         {
             _featureDal.Delete(entity);
+             return new SuccessResult();
         }
 
         public IDataResult<List<Feature>> GetAll()
@@ -30,14 +32,15 @@ namespace Business.Concrete
            return new SuccessDataResult<List<Feature>>(_featureDal.GetAll());
         }
 
-        public Feature GetById(int id)
+        public IDataResult<Feature> GetById(int id)
         {
-            return _featureDal.Get(x => x.ID == id);
+            return new SuccessDataResult<Feature>(_featureDal.Get(x => x.ID == id));
         }
 
-        public void Update(Feature entity)
+        public IResult Update(Feature entity)
         {
             _featureDal.Update(entity);
+             return new SuccessResult();
         }
     }
 

@@ -18,9 +18,14 @@ namespace UIApp.ViewComponents.Home
 
         public IViewComponentResult Invoke()
         {
-            var datas = _destinationService.GetAllDestinationIncludes();
-            
-            return View(datas);
+            var result = _destinationService.GetAllDestinationIncludes();
+            if(result.Success)
+                return View(result.Data);
+            else
+            {
+                ViewData.Add("message", result.Message);
+                return View();
+            }
         }
     }
 }

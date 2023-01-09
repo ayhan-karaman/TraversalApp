@@ -26,8 +26,13 @@ namespace UIApp.Controllers
         public IActionResult AddComment(Entities.Concrete.Comment comment)
         {
             
-            _commentService.Add(comment);
-            return RedirectToAction("Index", "Destination");
+            var result =  _commentService.Add(comment);
+            if(result.Success)
+            {
+                return RedirectToAction("Index", "Destination");
+            }
+                return RedirectToAction("AddComment", "Comment");
+            
         }
     }
 }

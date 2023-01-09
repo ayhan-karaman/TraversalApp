@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UIApp.ViewComponents.MemberDashboard
@@ -18,9 +19,13 @@ namespace UIApp.ViewComponents.MemberDashboard
 
         public IViewComponentResult Invoke()
         {
-            var datas = _guideService.GetAll();
-            
-            return View(datas);
+            var result = _guideService.GetAll();
+            if(result.Success)
+                return View(result.Data);
+            else
+            {
+                return View(result.Data);
+            }
         }
     }
 }
